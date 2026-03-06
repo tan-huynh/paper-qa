@@ -593,6 +593,10 @@ class ParsedMedia(BaseModel):
             " model-generated description(s) of the image."
         ),
     )
+    url: str | None = Field(
+        default=None,
+        description="Optional URL to the media. Added to prevent AttributeError when treated as DocDetails.",
+    )
 
     def _get_info_hashable(self) -> Hashable:
         if info_hashable := self.info.get("info_hashable"):
